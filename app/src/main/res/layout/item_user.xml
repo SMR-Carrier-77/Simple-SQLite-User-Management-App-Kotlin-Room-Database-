@@ -1,0 +1,63 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true"
+    >
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:background="#2ABDB0"
+         >
+
+         <TextView
+             android:id="@+id/tvusernam"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="ritu sarker"
+             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+             android:gravity="center"
+
+             />
+
+         <TextView
+             android:id="@+id/tvuserage"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="20"
+             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+             android:gravity="center"
+
+             />
+
+         <TextView
+             android:id="@+id/tvuserphone"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="01724945670"
+             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+             android:gravity="center"
+
+             />
+
+         <com.google.android.material.button.MaterialButton
+             android:id="@+id/editbtn"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Edit "
+             android:layout_gravity="center"
+             style="@style/Widget.Material3.Button.UnelevatedButton"
+             app:strokeColor="#009688"
+
+             />
+
+
+
+
+     </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
