@@ -12,6 +12,9 @@ import com.example.miasqlite_24_25.db.User
 class UserAdapter(val listener: HandelUserClick,val userList: List<User>): RecyclerView.Adapter<UserAdapter.userVH>() {
       interface HandelUserClick{
           fun onEditClick(user: User)
+
+          fun onLongDeleteClick(user: User)
+
       }
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -32,6 +35,10 @@ class UserAdapter(val listener: HandelUserClick,val userList: List<User>): Recyc
              tvuserphone.text="Phone:${user.number}"
               editbtn.setOnClickListener {
                 listener.onEditClick(user)
+              }
+              root.setOnLongClickListener {
+                  listener.onLongDeleteClick(user)
+                  true
               }
           }
 

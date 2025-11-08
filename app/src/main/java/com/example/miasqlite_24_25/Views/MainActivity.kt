@@ -3,6 +3,7 @@ package com.example.miasqlite_24_25.Views
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.miasqlite_24_25.databinding.ActivityMainBinding
@@ -27,15 +28,14 @@ class MainActivity : AppCompatActivity(), UserAdapter.HandelUserClick {
         val db= Room.databaseBuilder(
             applicationContext,
             UserDatabase::class.java,
-           " User_DB"
+           "User_DB"
         ). allowMainThreadQueries().build()
          dao=db.getUserDao()
 
+        setUserData()
 
-          dao.getAllUser().apply {
-           userAdapter= UserAdapter(this@MainActivity,this)
-              binding.rv.adapter=userAdapter
-          }
+
+
 
 
         binding.btn2.setOnClickListener {
@@ -44,10 +44,23 @@ class MainActivity : AppCompatActivity(), UserAdapter.HandelUserClick {
         }
          }
 
+    private fun setUserData() {
+        dao.getAllUser().apply {
+            userAdapter= UserAdapter(this@MainActivity,this)
+            binding.rv.adapter=userAdapter
+        }
+    }
+
     override fun onEditClick(user: User) {
         val editintent= Intent(this@MainActivity, AddUserActivity::class.java)
         editintent.putExtra(AddUserActivity.editKey,user)
         startActivity(editintent)
+    }
+
+    override fun onLongDeleteClick(user: User) {
+       dao.deleteUser(user)
+        Toast.makeText(this@MainActivity,"${user.name}data has been deleted", Toast.LENGTH_LONG).show()
+        setUserData()
     }
 
 
